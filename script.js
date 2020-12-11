@@ -124,3 +124,25 @@ function interval(){
 // ----------------------------------------------------------------
 // localStorage: ao fechar o navegador os dados ainda ficam salvos (salvo localmente no navegador)
 // sessionStorage: ao fechar o navegador os dados são perdidos
+// 
+// localStorage.setItem("name", "Salvador")
+// localStorage.getItem("name", "Salvador")
+// localStorage.removeItem("name", "Salvador")
+
+// var nam = localStorage.name
+// localStorage.name = "Salvador"
+
+// sessionStorage.setItem("theme", "dark")
+
+function getName(){
+    var area = document.getElementById("display_area")
+    var name
+
+    if(typeof(localStorage.name) == "undefined"){
+        localStorage.name = prompt("What's your name?")
+    }
+
+    var name = localStorage.name
+
+    area.innerHTML = "Storage send your name: " + name
+}
