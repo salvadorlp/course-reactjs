@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Learning JavaScript</title>
+
+        <script type="text/javaScript" src="script.js"></script>
+
+    </head>
+
+    <body>
+        <!-- <h1>Learning JavaScript</h1> -->
+
+        <button onclick="window.location.href='https://google.com'">Go to Google</button>
+        <button onclick="window.location.href = window.location.href">Clear the page</button>
+
+        <br><br>
+        <div id="area">
+        </div>
+        <br><br>
+
+        <!-- <button onclick="document.getElementById('area').innerHTML = 'Welcome ' + prompt('Whats your name?'); ">What's your name?</button> -->
+
+        <button onclick="enter()">Whats your name?</button>
+        
+        <!-- <button onclick="this.innerHTML = prompt('What\'\s the name of the button?');"> What's the name of the button?</button> -->
+
+        <button class="button" onclick="nameButton()">Name of the button?</button>
+
+        <br><br>
+
+        <button onclick="ArrayCommands()">Commands of Arrays</button>
+
+        <div id="array_area">
+        </div>
+
+        <br><br>
+
+        <button onclick="loops()">Loops</button>
+
+        <div id="loops_area">
+        </div>
+
+        <br><br>
+
+        <button onclick="interval()">Interval Execution</button>
+        <!-- [CHALLENGE] <button onclick="waitAndExecute()"> Wait And Execute</button> -->
+        <!-- [CHALLENGE] <button onclick="clearInterval(timer)">Clear Interval Execution</button> -->
+
+        <div id="interval_area">
+        </div>
+        
+        
+
+    </body>
+</html>
