@@ -75,6 +75,15 @@ function loops(){
     }
 
     if (x < 10){
+        console.log("x < 10")
+        x++
+    }
+
+    vector = [1, 2, 3, 4, 5];
+
+    console.log("-----vector-----")
+    for(var i in vector){
+        console.log(vector[i])
     }
 
     loops_area.innerHTML = text;
@@ -146,3 +155,129 @@ function getName(){
 
     area.innerHTML = "Storage send your name: " + name
 }
+
+// difference between [ var ] [ let ] [ const ]
+// 
+// [ let ] is defined just in his scope as opposed to [ var ]
+//
+// [ const ] you can't change his value
+
+// Using variables inside of strings
+//
+let names = "Olivier"
+let lastnames = "Liudy"
+let ages = 19
+
+let person = "My name is: " + names + " " + lastnames + " and I have " + ages + " years old"
+
+let person1 = `My name is: ${names} ${lastnames} and I have ${ages} years old`
+
+// desconstruct objects and arrays
+
+let individual = {
+    name_obj: "Olivier",
+    nickname_obj: "Liudy",
+    age_obj: 19
+}
+
+let friends = ["Liudy", "JP", "VH"]
+
+let { name_obj } = individual // name_obj = individual.name_obj
+let { age_obj } = individual // age_obj = individual.age_obj
+let { nickname_obj:nickname } = individual // nickname = individual.nickname_obj
+
+let { 0:friend0 } = friends // friend0 = friends[0]
+let { 1:friend1 } = friends // friend1 = friends[1]
+let { 2:friend2 } = friends // friend2 = friends[2]
+
+let [ fr, fr1, fr2 ] = friends // fr = friends[0] | fr1 = friends[1] | fr2 = friends[2]
+let [ f, f1] = friends // f = friends[0] | f1 = friends[1]
+
+// SPREAD operator [ ... ]
+
+var vec1 = [1, 2, 3]
+
+var vec2 = [vec1, 4, 5, 6] // vec2 = [[1, 2, 3], 4, 5, 6]
+
+var vec3 = [...vec1, 4, 5, 6] // vec3 = [1, 2, 3, 4, 5, 6]
+
+
+function registerStudent(info){
+    let newData = {
+        ...info,
+        course: "Human Medicine",
+        courseDuration: "6 years",
+        status: 1
+    }
+    return newData
+}
+
+// REST operator [ ... ]
+
+var users = ["Sagi", "Liudy"]
+
+function register(users, ...newUsers){
+    // for(user in newUsers)
+    // {
+    //     users = [...users, newUsers[user]]
+    // }
+    // return users
+    let totalUsers = [
+        ...users, ...newUsers
+    ]
+    return totalUsers
+}
+
+console.log("Before register: " + users)
+users = register(users, "Salvador", "Bado")
+console.log("After register: " + users)
+
+// ARRAY OPERATIONS [ map ] [ reduce ] [ find ]
+
+var larray = [1,2,3,4,5,6]
+
+const mapArray = larray.map( (item) => {
+    return item*10
+})
+
+const mapArray1 = larray.map( (item, index) => {
+    return item + index
+})
+
+const mapArray2 = larray.map( (item, index, vector) => {
+    return vector[0] * item * index
+})
+
+// in [ reduce ] currentValue starts in v[1]
+const reduceArray = larray.reduce( (total, next) => {
+    return total + next
+})
+
+const findArray = larray.find( (item) => {
+    return item === 2
+})
+
+// Facilities [ includes ] [ endsWith ] [ startsWith ]
+console.log("---------- [ INCLUDES ] [ ENDSWITH ] [ STARTSWITH ]----------")
+let namesArray = ["Joao", "Maria", "Pedro"]
+console.log(namesArray)
+
+console.log(namesArray.includes("Pedro")) // true
+console.log(namesArray.includes("Pedr")) // false
+console.log(namesArray.includes("Junior")) // false
+
+console.log(namesArray[0].endsWith("ao")) // true
+console.log(namesArray[0].endsWith("s")) // false
+
+console.log("---------- [ SOME ] [ EVERY ] ----------")
+// Facilities [ some ] [ every ]
+
+console.log(namesArray.some(name => name == "Pedro")) // true
+
+namesObject = [
+    {name: "Joao", age: 15},
+    {name: "Maria", age: 85},
+    {name: "Pedro", age: 20}
+]
+
+console.log(namesObject.every(person => person.age >= 18)) // false
