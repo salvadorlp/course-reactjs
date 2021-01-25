@@ -72,36 +72,49 @@ import React, { Component } from "react";
 //   }
 // }
 
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       time: "00:00:00",
+//     };
+//   }
+
+//   // will be called right after component was mounted
+//   componentDidMount() {
+//     setInterval(() => {
+//       this.setState({ time: new Date().toLocaleTimeString() });
+//     }, 1000);
+//   }
+
+//   // every time component was updated, this method will be called
+//   componentDidUpdate() {
+//     console.log("Updated!");
+//   }
+
+//   // componentWillMount() right before component is mounted
+//   // shouldComponentUpdate()
+//   // componentWillUpdate() called when shouldComponentUpdate() returns true
+//   // componentWillUnmount()
+
+//   render() {
+//     return (
+//       <div>
+//         <h1>React time update</h1>
+//         <h2>{this.state.time}</h2>
+//       </div>
+//     );
+//   }
+// }
+
+import Member from "./components/member";
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      time: "00:00:00",
-    };
-  }
-
-  // will be called right after component was mounted
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({ time: new Date().toLocaleTimeString() });
-    }, 1000);
-  }
-
-  // every time component was updated, this method will be called
-  componentDidUpdate() {
-    console.log("Updated!");
-  }
-
-  // componentWillMount() right before component is mounted
-  // shouldComponentUpdate()
-  // componentWillUpdate() called when shouldComponentUpdate() returns true
-  // componentWillUnmount()
-
   render() {
     return (
       <div>
-        <h1>React time update</h1>
-        <h2>{this.state.time}</h2>
+        <h1>Project</h1>
+        <Member name="visitor" />
       </div>
     );
   }
