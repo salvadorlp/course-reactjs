@@ -5,6 +5,7 @@ class Member extends Component {
     super(props);
     this.state = {
       name: props.name,
+      status: false,
     };
 
     this.signIn = this.signIn.bind(this);
@@ -12,7 +13,7 @@ class Member extends Component {
 
   signIn() {
     const name = prompt("What's your name?");
-    this.setState({ name: name });
+    this.setState({ name: name, status: true });
   }
 
   render() {
@@ -20,9 +21,16 @@ class Member extends Component {
       <div>
         <p>Welcome {this.state.name}</p>
         <button onClick={this.signIn}>Sign In</button>
-        <button onClick={() => this.setState({ name: "visitor" })}>
-          Logout
-        </button>
+
+        {this.state.status ? (
+          <button
+            onClick={() => this.setState({ name: "visitor", status: false })}
+          >
+            Logout
+          </button>
+        ) : (
+          <div></div>
+        )}
       </div>
     );
   }
