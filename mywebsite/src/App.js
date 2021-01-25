@@ -107,16 +107,42 @@ import React, { Component } from "react";
 //   }
 // }
 
-import Member from "./components/member";
+// import Member from "./components/member";
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <h1>Project</h1>
+//         <Member name="visitor" />
+//       </div>
+//     );
+//   }
+// }
+
+import Feed from "./components/feed";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      feed: [
+        { id: 1, username: "Salvador", likes: 212, comments: 23 },
+        { id: 2, username: "Arthur", likes: 266, comments: 15 },
+        { id: 3, username: "Caio", likes: 1, comments: 5 },
+      ],
+    };
+  }
+
   render() {
-    return (
-      <div>
-        <h1>Project</h1>
-        <Member name="visitor" />
-      </div>
-    );
+    return this.state.feed.map((item) => {
+      <Feed
+        id={item.id}
+        username={item.username}
+        likes={item.likes}
+        comments={item.comments}
+      />;
+    });
   }
 }
 
