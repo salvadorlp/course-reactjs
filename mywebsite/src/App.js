@@ -28,45 +28,80 @@ import React, { Component } from "react";
 
 // export default App;
 
+// class App extends Component {
+//   constructor(props) {
+//     super(props); // use all resources from this component
+//     this.state = {
+//       name: "Matheus",
+//       count: 0,
+//     };
+
+//     this.increase = this.increase.bind(this); // connecting increase function to this class
+//     this.decrease = this.decrease.bind(this);
+//   }
+
+//   increase() {
+//     let state = this.state;
+//     state.count += 1;
+
+//     this.setState(state);
+//   }
+
+//   decrease() {
+//     let state = this.state;
+//     if (state.count === 0) {
+//       alert("Can't reduce below zero!");
+//       return;
+//     }
+//     state.count -= 1;
+
+//     this.setState(state);
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <h1>Counter</h1>
+//         <h1>
+//           <button onClick={this.decrease}>-</button>
+//           {this.state.count}
+//           <button onClick={this.increase}>+</button>
+//         </h1>
+//       </div>
+//     );
+//   }
+// }
+
 class App extends Component {
   constructor(props) {
-    super(props); // use all resources from this component
+    super(props);
     this.state = {
-      name: "Matheus",
-      count: 0,
+      time: "00:00:00",
     };
-
-    this.increase = this.increase.bind(this); // connecting increase function to this class
-    this.decrease = this.decrease.bind(this);
   }
 
-  increase() {
-    let state = this.state;
-    state.count += 1;
-
-    this.setState(state);
+  // will be called right after component was mounted
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ time: new Date().toLocaleTimeString() });
+    }, 1000);
   }
 
-  decrease() {
-    let state = this.state;
-    if (state.count === 0) {
-      alert("Can't reduce below zero!");
-      return;
-    }
-    state.count -= 1;
-
-    this.setState(state);
+  // every time component was updated, this method will be called
+  componentDidUpdate() {
+    console.log("Updated!");
   }
+
+  // componentWillMount() right before component is mounted
+  // shouldComponentUpdate()
+  // componentWillUpdate() called when shouldComponentUpdate() returns true
+  // componentWillUnmount()
 
   render() {
     return (
       <div>
-        <h1>Counter</h1>
-        <h1>
-          <button onClick={this.decrease}>-</button>
-          {this.state.count}
-          <button onClick={this.increase}>+</button>
-        </h1>
+        <h1>React time update</h1>
+        <h2>{this.state.time}</h2>
       </div>
     );
   }
