@@ -37,6 +37,7 @@ class App extends Component {
     };
 
     this.increase = this.increase.bind(this); // connecting increase function to this class
+    this.decrease = this.decrease.bind(this);
   }
 
   increase() {
