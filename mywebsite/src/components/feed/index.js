@@ -6,8 +6,10 @@ class Feed extends Component {
       <div key={this.props.id}>
         <h3>{this.props.username}</h3>
         <p>
-          Likes: {this.props.likes} / Comments: {this.props.comments}
+          {this.props.likes > 1 ? this.props.likes + ' Likes' : this.props.likes + ' Like'} /
+          {this.props.comments > 1 ? ' ' + this.props.comments + ' Comments' : this.props.comments + ' Comment'} 
         </p>
+        <hr/>
       </div>
     );
   }

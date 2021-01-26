@@ -130,19 +130,19 @@ class App extends Component {
         { id: 1, username: "Salvador", likes: 212, comments: 23 },
         { id: 2, username: "Arthur", likes: 266, comments: 15 },
         { id: 3, username: "Caio", likes: 1, comments: 5 },
-      ],
+      ]
     };
   }
 
   render() {
-    return this.state.feed.map((item) => {
-      <Feed
-        id={item.id}
-        username={item.username}
-        likes={item.likes}
-        comments={item.comments}
-      />;
-    });
+    return (
+      this.state.feed.map((item) => {
+        return (
+          <Feed id={item.id} username={item.username} likes={item.likes} comments={item.comments}/>
+        )
+      }) 
+    )
+    
   }
 }
 
