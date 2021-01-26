@@ -120,29 +120,73 @@ import React, { Component } from "react";
 //   }
 // }
 
-import Feed from "./components/feed";
+// import Feed from "./components/feed";
 
-class App extends Component {
-  constructor(props) {
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       feed: [
+//         { id: 1, username: "Salvador", likes: 212, comments: 23 },
+//         { id: 2, username: "Arthur", likes: 266, comments: 15 },
+//         { id: 3, username: "Caio", likes: 1, comments: 5 },
+//       ]
+//     };
+//   }
+
+//   render() {
+//     return (
+//       this.state.feed.map((item) => {
+//         return (
+//           <Feed id={item.id} username={item.username} likes={item.likes} comments={item.comments}/>
+//         )
+//       }) 
+//     )
+    
+//   }
+// }
+
+class App extends Component{
+  constructor(props){
     super(props);
     this.state = {
-      feed: [
-        { id: 1, username: "Salvador", likes: 212, comments: 23 },
-        { id: 2, username: "Arthur", likes: 266, comments: 15 },
-        { id: 3, username: "Caio", likes: 1, comments: 5 },
-      ]
-    };
+      email: "xyz@gmail.com",
+      password: "",
+      gender: "Male"
+    }
+
+    this.updateEmail = this.updateEmail.bind(this);
+    this.updateGender = this.updateGender.bind(this);
   }
 
-  render() {
-    return (
-      this.state.feed.map((item) => {
-        return (
-          <Feed id={item.id} username={item.username} likes={item.likes} comments={item.comments}/>
-        )
-      }) 
+  updateEmail(e) {
+    this.setState({email: e.target.value})
+  }
+
+  updateGender(e){
+    this.setState({gender: e.target.value})
+  }
+
+  render(){
+    return(
+      <div>
+        <h2>Faça o login</h2>
+        Email:
+        <input type="email" name="email" value={this.state.email} onChange={this.updateEmail}></input> <br/>
+        Password:
+        <input type="password" name="password" value={this.state.password} onChange={(e)=> {this.setState({password: e.target.value})}}></input> <br/>
+        Gender: 
+        <select name="gender" value={this.state.gender} onChange={this.updateGender}>
+          <option value ="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <ui>
+          <li>{this.state.email}</li>
+          <li>{this.state.password}</li>
+          <li>{this.state.gender}</li>
+        </ui>
+      </div>
     )
-    
   }
 }
 
