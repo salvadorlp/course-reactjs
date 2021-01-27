@@ -146,45 +146,90 @@ import React, { Component } from "react";
 //   }
 // }
 
+// class App extends Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       email: "xyz@gmail.com",
+//       password: "",
+//       gender: "Male"
+//     }
+
+//     this.updateEmail = this.updateEmail.bind(this);
+//     this.updateGender = this.updateGender.bind(this);
+//   }
+
+//   updateEmail(e) {
+//     this.setState({email: e.target.value})
+//   }
+
+//   updateGender(e){
+//     this.setState({gender: e.target.value})
+//   }
+
+//   render(){
+//     return(
+//       <div>
+//         <h2>Faça o login</h2>
+//         Email:
+//         <input type="email" name="email" value={this.state.email} onChange={this.updateEmail}></input> <br/>
+//         Password:
+//         <input type="password" name="password" value={this.state.password} onChange={(e)=> {this.setState({password: e.target.value})}}></input> <br/>
+//         Gender: 
+//         <select name="gender" value={this.state.gender} onChange={this.updateGender}>
+//           <option value ="Male">Male</option>
+//           <option value="Female">Female</option>
+//         </select>
+//         <ui>
+//           <li>{this.state.email}</li>
+//           <li>{this.state.password}</li>
+//           <li>{this.state.gender}</li>
+//         </ui>
+//       </div>
+//     )
+//   }
+// }
+
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      email: "xyz@gmail.com",
-      password: "",
-      gender: "Male"
+      name: '',
+      email: '',
+      password: '',
+      error: ''
     }
 
-    this.updateEmail = this.updateEmail.bind(this);
-    this.updateGender = this.updateGender.bind(this);
+    this.createAccount = this.createAccount.bind(this);
   }
 
-  updateEmail(e) {
-    this.setState({email: e.target.value})
-  }
+  createAccount(event){
+    const {name, email, password} = this.state;
 
-  updateGender(e){
-    this.setState({gender: e.target.value})
+    if(name !== '' && email !== '' && password !== ''){
+      alert(`Name: ${name}\nEmail: ${email}\nPassword: ${password}\n`);
+      this.setState({error: ''})
+    }else{
+      this.setState({error: 'Fill all fields'});
+    }
+
+    event.preventDefault();
   }
 
   render(){
     return(
       <div>
-        <h2>Faça o login</h2>
-        Email:
-        <input type="email" name="email" value={this.state.email} onChange={this.updateEmail}></input> <br/>
-        Password:
-        <input type="password" name="password" value={this.state.password} onChange={(e)=> {this.setState({password: e.target.value})}}></input> <br/>
-        Gender: 
-        <select name="gender" value={this.state.gender} onChange={this.updateGender}>
-          <option value ="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        <ui>
-          <li>{this.state.email}</li>
-          <li>{this.state.password}</li>
-          <li>{this.state.gender}</li>
-        </ui>
+        <h1>Create Your Account</h1>
+        <form onSubmit={this.createAccount}>
+          <label>Name: </label>
+          <input type="text" value={this.state.name} onChange={ (e) => this.setState({name: e.target.value})}></input> <br/>
+          <label>Email: </label>
+          <input type="email" value={this.state.email} onChange={ (e) => this.setState({email: e.target.value})}></input> <br/>
+          <label>Password: </label>
+          <input type="password" value={this.state.password} onChange={ (e) => this.setState({password: e.target.value})}></input> <br/>
+          {this.state.error && <p>{this.state.error}</p>} {/** {this.state.error !== '' <p>{this.state.error}</p>} */}
+          <button type="submit">Submit</button>
+        </form>
       </div>
     )
   }
