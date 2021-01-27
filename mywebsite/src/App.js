@@ -146,93 +146,95 @@ import React, { Component } from "react";
 //   }
 // }
 
-// class App extends Component{
-//   constructor(props){
-//     super(props);
-//     this.state = {
-//       email: "xyz@gmail.com",
-//       password: "",
-//       gender: "Male"
-//     }
-
-//     this.updateEmail = this.updateEmail.bind(this);
-//     this.updateGender = this.updateGender.bind(this);
-//   }
-
-//   updateEmail(e) {
-//     this.setState({email: e.target.value})
-//   }
-
-//   updateGender(e){
-//     this.setState({gender: e.target.value})
-//   }
-
-//   render(){
-//     return(
-//       <div>
-//         <h2>Faça o login</h2>
-//         Email:
-//         <input type="email" name="email" value={this.state.email} onChange={this.updateEmail}></input> <br/>
-//         Password:
-//         <input type="password" name="password" value={this.state.password} onChange={(e)=> {this.setState({password: e.target.value})}}></input> <br/>
-//         Gender: 
-//         <select name="gender" value={this.state.gender} onChange={this.updateGender}>
-//           <option value ="Male">Male</option>
-//           <option value="Female">Female</option>
-//         </select>
-//         <ui>
-//           <li>{this.state.email}</li>
-//           <li>{this.state.password}</li>
-//           <li>{this.state.gender}</li>
-//         </ui>
-//       </div>
-//     )
-//   }
-// }
-
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      error: ''
+      form: {
+        name: '',
+        email: '',
+        password: '',
+        gender: 'Male'
+      }
     }
 
-    this.createAccount = this.createAccount.bind(this);
+    this.formData = this.formData.bind(this);
   }
 
-  createAccount(event){
-    const {name, email, password} = this.state;
-
-    if(name !== '' && email !== '' && password !== ''){
-      alert(`Name: ${name}\nEmail: ${email}\nPassword: ${password}\n`);
-      this.setState({error: ''})
-    }else{
-      this.setState({error: 'Fill all fields'});
-    }
-
-    event.preventDefault();
+  formData(e){
+    let form = this.state.form;
+    form[e.target.name] = e.target.value;
+    this.setState({form: form});
   }
 
   render(){
     return(
       <div>
-        <h1>Create Your Account</h1>
-        <form onSubmit={this.createAccount}>
-          <label>Name: </label>
-          <input type="text" value={this.state.name} onChange={ (e) => this.setState({name: e.target.value})}></input> <br/>
-          <label>Email: </label>
-          <input type="email" value={this.state.email} onChange={ (e) => this.setState({email: e.target.value})}></input> <br/>
-          <label>Password: </label>
-          <input type="password" value={this.state.password} onChange={ (e) => this.setState({password: e.target.value})}></input> <br/>
-          {this.state.error && <p>{this.state.error}</p>} {/** {this.state.error !== '' <p>{this.state.error}</p>} */}
-          <button type="submit">Submit</button>
-        </form>
+        <h2>Faça o login</h2>
+        <label>Name: </label>
+        <input type="text" name="name" value={this.state.form.name} onChange={this.formData}></input> <br/>
+        <label>Email: </label>
+        <input type="email" name="email" value={this.state.form.email} onChange={this.formData}></input> <br/>
+        <label>Password: </label>
+        <input type="password" name="password" value={this.state.form.password} onChange={this.formData}></input> <br/>
+        <label>Gender: </label> 
+        <select name="gender" value={this.state.form.gender} onChange={this.formData}>
+          <option value ="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <ui>
+          <li>{this.state.form.email}</li>
+          <li>{this.state.form.password}</li>
+          <li>{this.state.form.gender}</li>
+        </ui>
       </div>
     )
   }
 }
+
+// class App extends Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       name: '',
+//       email: '',
+//       password: '',
+//       error: ''
+//     }
+
+//     this.createAccount = this.createAccount.bind(this);
+//   }
+
+//   createAccount(event){
+//     const {name, email, password} = this.state;
+
+//     if(name !== '' && email !== '' && password !== ''){
+//       alert(`Name: ${name}\nEmail: ${email}\nPassword: ${password}\n`);
+//       this.setState({error: ''})
+//     }else{
+//       this.setState({error: 'Fill all fields'});
+//     }
+
+//     event.preventDefault();
+//   }
+
+//   render(){
+//     return(
+//       <div>
+//         <h1>Create Your Account</h1>
+//         <form onSubmit={this.createAccount}>
+//           <label>Name: </label>
+//           <input type="text" value={this.state.name} onChange={ (e) => this.setState({name: e.target.value})}></input> <br/>
+//           <label>Email: </label>
+//           <input type="email" value={this.state.email} onChange={ (e) => this.setState({email: e.target.value})}></input> <br/>
+//           <label>Password: </label>
+//           <input type="password" value={this.state.password} onChange={ (e) => this.setState({password: e.target.value})}></input> <br/>
+//           {this.state.error && <p>{this.state.error}</p>} {/** {this.state.error !== '' <p>{this.state.error}</p>} */}
+//           <button type="submit">Submit</button>
+//         </form>
+//       </div>
+//     )
+//   }
+// }
 
 export default App;
