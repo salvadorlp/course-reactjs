@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    /* align-content: center; */
+    /* vertical-align: middle; */
+    margin-top: 3em;
+}
+
+.img{
+    width: 20em;
+}
+
+.timer{
+    font-size: 7em;
+    margin-top: -2.3em;
+}
+
+.btn{
+    background-color: #929292;
+    width: 4em;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+    font-size: 1.4em;
+}
+
+.listArea{
+    margin-top: 5em;
+}
