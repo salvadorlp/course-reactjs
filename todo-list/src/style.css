@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    font-size: 15px;
+    width: 100%;
+    height: 2rem;
+    background-color: #647C64;
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center; /*vertical */
+    font-weight: bold;
+    font-family:'Times New Roman';
+    font-size: 1.6rem;
+}
+
+.input-box{
+    margin-right: 0.8rem;
+}
+
+.todoList{
+    display: flex;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin-top: 1rem;
+    margin-right: 6rem;
+}
+
+.item{
+    font-family:'Times New Roman';
+    font-size: 1.2rem;
+}
