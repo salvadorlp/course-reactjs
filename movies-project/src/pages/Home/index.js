@@ -34,7 +34,7 @@ class Home extends Component {
                         return(
                             <article key={movie.id} className="movie">
                                 <h2 className="title">{movie.nome}</h2>
-                                <img className="img" src={movie.foto} alt="movie-photo"></img>
+                                <img className="img" src={movie.foto} alt="movie"></img>
                                 <NavLink className="btn"to={`/movie/${movie.id}`}>Read More</NavLink>
                             </article>
                         )

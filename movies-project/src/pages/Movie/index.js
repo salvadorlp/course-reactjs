@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
-import './movie.css'
+import './movie.css';
 
 class Movie extends Component {
     constructor(props) {
@@ -31,7 +30,7 @@ class Movie extends Component {
             <div className="containerW">
                 <article key={this.state.movie.id} className="movieW">
                     <h2 className="title">{this.state.movie.nome}</h2>
-                    <img className="imgW" src={this.state.movie.foto} alt="movie-photo"></img>
+                    <img className="imgW" src={this.state.movie.foto} alt="movie"></img>
                     {this.state.movie.lenght !== 0 && <h3>Sinopse</h3>}
                     <p className="synopsis">{this.state.movie.sinopse}</p>
                 </article>
