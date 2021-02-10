@@ -19,12 +19,14 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks] );
 
+  // useCallback is similar to useMemo but here its possible to return a function
   const handleAdd = useCallback(() => {
     setTasks([...tasks, input]);
     setInput('');
   }, [input, tasks]);
 
-  // useMemo ( () => {} , [] )
+  // if any function inside return is called, all functions inside it will be executed too
+  // Because of that, we use useMemo ( () => {} , [] ) to not call functions unecessarily
   const tasksCount = useMemo( () => tasks.length, [tasks] );
 
   return (
